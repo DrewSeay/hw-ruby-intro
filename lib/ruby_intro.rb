@@ -22,35 +22,86 @@ def max_2_sum arr
 end
 
 def sum_to_n? arr, n
-    if arr.length == 0
-        return true
-    else
-        arr.each do |n1|
-            arr.each do |n2|
-                if n1 + n2 == n
-                    return true
-                end
-            end
-        end
-    end
+   return false if arr.empty?
+   arr.combination(2).any? { |n1 , n2| n1 + n2 == n } 
 end
+
+
+
+
 
 # Part 2
 
 def hello(name)
-  # YOUR CODE HERE
+  "Hello, " + name
 end
+
+
 
 def starts_with_consonant? s
-  # YOUR CODE HERE
+  let = s.downcase.chr
+  if s.eql?("") || let != /[a-z]/
+    return false
+  else
+    ["a","e","i","o","u"].each do |cons|
+      if cons.eql?(let)
+          return true
+      else
+         next
+      end
+    end
+  end
+  return false
 end
 
+
+
 def binary_multiple_of_4? s
-  # YOUR CODE HERE
+  if s.chr.eql?("0") == false || s.chr.eql?("1")
+    return false
+  else
+    num = s.to_i(2)
+    if num % 4 == 0
+     return true
+    else
+     return false
+    end
+  end
 end
+
+
+
+
+
+
 
 # Part 3
 
 class BookInStock
-# YOUR CODE HERE
+  def initialize( new_isbn, new_price)
+  end
+  
+  #attr_accessor :isbn, :price
+  def isbn()
+    @isbn
+  end
+  
+  def price()
+    @price
+  end
+  
+  def isbn=(new_isbn)
+    @isbn = new_isbn
+  end
+  
+  def price=(new_price)
+    @price=new_price
+  end
+
+
+
+
+
 end
+
+
