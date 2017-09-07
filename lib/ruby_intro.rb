@@ -27,11 +27,7 @@ def sum_to_n? arr, n
 end
 
 
-
-
-
 # Part 2
-
 def hello(name)
   "Hello, " + name
 end
@@ -39,69 +35,52 @@ end
 
 
 def starts_with_consonant? s
-  let = s.downcase.chr
-  if s.eql?("") || let != /[a-z]/
-    return false
-  else
-    ["a","e","i","o","u"].each do |cons|
-      if cons.eql?(let)
-          return true
-      else
-         next
-      end
-    end
-  end
-  return false
+   if s.chr =~ /[^aeiou]+/i
+    true
+   else
+     false
+   end
 end
 
 
 
 def binary_multiple_of_4? s
-  if s.chr.eql?("0") == false || s.chr.eql?("1")
+  if s =~ /^[01]*0$/
+    return true
+  else 
     return false
-  else
-    num = s.to_i(2)
-    if num % 4 == 0
-     return true
-    else
-     return false
-    end
   end
 end
 
 
-
-
-
-
-
 # Part 3
 
-class BookInStock
-  def initialize( new_isbn, new_price)
+class BookInStock 
+  attr_accessor :isbn, :price
+  
+  def initialize(isbn, price)
+    @isbn = isbn
+    @price = price
+    if(@isbn =="" || @price <=0)
+      raise ArgumentError
+    end
   end
   
-  #attr_accessor :isbn, :price
-  def isbn()
-    @isbn
+  def set_isbn(isbn)
+    @isbn = isbn
   end
   
-  def price()
-    @price
+  def set_price(price)
+    @price = price
   end
   
-  def isbn=(new_isbn)
-    @isbn = new_isbn
+  
+  def price_as_string
+    return "$%.2f" % @price
   end
   
-  def price=(new_price)
-    @price=new_price
-  end
-
-
-
-
-
+ 
+ 
 end
 
 
